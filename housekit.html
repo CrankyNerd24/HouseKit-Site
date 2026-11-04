@@ -47,7 +47,13 @@ p { margin: 0; }
 
 /* Hero */
 .hero { padding-block: 56px 40px; display: grid; gap: 28px; }
-.brand { display: flex; align-items: center; gap: 12px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+nav { display: flex; gap: 18px; flex-wrap: wrap; font: 600 15px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; }
+nav a { color: var(--muted); text-decoration: none; padding-block: 6px; }
+nav a:hover { color: var(--text); }
+nav a[aria-current="page"] { color: var(--text); }
+.top a:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
 .brand svg { flex: none; }
 .brand span { font: 700 24px/1 var(--display); color: var(--muted); letter-spacing: 0.02em; }
 .hero h1 { font-size: clamp(44px, 8vw, 88px); font-weight: 700; letter-spacing: -0.01em; max-width: 14ch; }
@@ -128,15 +134,18 @@ footer { padding-block: 24px 48px; color: var(--muted); font-size: 14px; display
 <body>
 <div class="wrap">
   <header class="hero">
-    <div class="brand">
-      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
-        <g fill="#F5A524">
-          <rect x="1" y="10" width="3" height="8" rx="1.5"/><rect x="6.5" y="5" width="3" height="18" rx="1.5"/>
-          <rect x="12.5" y="1" width="3" height="26" rx="1.5"/><rect x="18.5" y="6" width="3" height="16" rx="1.5"/>
-          <rect x="24" y="11" width="3" height="6" rx="1.5"/>
-        </g>
-      </svg>
-      <span>HouseKit</span>
+    <div class="top">
+      <a class="brand" href="housekit.html">
+        <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+          <g fill="#F5A524">
+            <rect x="1" y="10" width="3" height="8" rx="1.5"/><rect x="6.5" y="5" width="3" height="18" rx="1.5"/>
+            <rect x="12.5" y="1" width="3" height="26" rx="1.5"/><rect x="18.5" y="6" width="3" height="16" rx="1.5"/>
+            <rect x="24" y="11" width="3" height="6" rx="1.5"/>
+          </g>
+        </svg>
+        <span>HouseKit</span>
+      </a>
+      <nav aria-label="HouseKit pages"><a href="housekit.html" aria-current="page">About</a><a href="manual.html">Manual</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
     </div>
     <h1>A drummer for your practice, built for <em>guitarists</em>.</h1>
     <p class="lede">Most drum apps hand you a grid and expect you to think like a drummer. HouseKit starts from the song you're playing: <strong>lay out the sections, say how it should feel, and play along</strong>. It runs entirely on your iPad.</p>
