@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HouseKit User Manual</title>
+<meta name="description" content="How to use HouseKit on iPad: build songs, shape the feel, Tell HouseKit, Sounds Like, Play-along, foot pedals, kits and export.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One reading column on HouseKit's dark stage, as the Support page; the
+   manual adds a contents list, step lists, tips and on-screen labels. */
+:root {
+  color-scheme: dark;
+  --stage: #141417;
+  --riser: #1D1D22;
+  --line: #34343C;
+  --text: #F3EFE6;
+  --muted: #A9A6A0;
+  --amber: #F5A524;
+  --on-amber: #1A1406;
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+body { background: var(--stage); color: var(--text); font: 400 17px/1.65 var(--body); }
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 56px;
+  display: grid;
+  gap: 36px;
+}
+a { color: var(--amber); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.08; }
+p, ul { margin: 0; }
+ul { padding-left: 1.2em; display: grid; gap: 6px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand span { font: 700 22px/1 var(--display); color: var(--muted); letter-spacing: 0.02em; }
+nav { display: flex; gap: 18px; font: 600 15px/1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; }
+nav a { color: var(--muted); text-decoration: none; }
+nav a[aria-current="page"] { color: var(--text); }
+header.page { display: grid; gap: 12px; }
+header.page h1 { font-size: clamp(40px, 7vw, 64px); font-weight: 700; }
+.lede { font-size: 19px; color: var(--muted); max-width: 60ch; }
+.lede strong { color: var(--text); font-weight: 600; }
+.stamp { font: 500 13px/1.4 var(--mono); color: var(--muted); }
+section { display: grid; gap: 12px; }
+section h2 { font-size: 30px; font-weight: 700; }
+section h3 { font-size: 21px; font-weight: 600; }
+section p, section li { color: var(--text); max-width: 65ch; }
+.muted { color: var(--muted); }
+.panel { background: var(--riser); border: 1px solid var(--line); border-radius: 16px; padding: 22px; display: grid; gap: 12px; }
+.panel.contact { border-color: var(--amber); }
+.email { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.email a { font: 600 22px/1.2 var(--body); overflow-wrap: anywhere; }
+.copy {
+  font: 600 15px/1 var(--body); color: var(--on-amber); background: var(--amber);
+  border: 0; border-radius: 10px; padding: 10px 14px; cursor: pointer;
+}
+details { border-top: 1px solid var(--line); padding-block: 14px; }
+details:last-child { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; font: 600 21px/1.25 var(--display); list-style-position: outside; }
+details > div { display: grid; gap: 10px; padding-top: 10px; color: var(--text); max-width: 65ch; }
+table { border-collapse: collapse; width: 100%; font-size: 16px; }
+th, td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 600 13px/1.2 var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.scroll { overflow-x: auto; }
+footer { border-top: 1px solid var(--line); padding-top: 20px; color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+
+.toc { background: var(--riser); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; display: grid; gap: 10px; }
+.toc h2 { font-size: 22px; }
+.toc ol { margin: 0; padding-left: 1.4em; columns: 2 220px; column-gap: 28px; }
+.toc li { break-inside: avoid; padding-block: 3px; }
+.toc a { text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+ol.steps { margin: 0; padding-left: 1.4em; display: grid; gap: 6px; }
+section { scroll-margin-top: 16px; }
+section h2 { padding-top: 8px; border-top: 1px solid var(--line); padding-top: 28px; }
+.ui { font: 600 0.92em/1 var(--body); background: #2C2C34; border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; white-space: nowrap; }
+q { font-style: italic; quotes: "\201C" "\201D"; }
+.tip { border-left: 3px solid var(--amber); background: var(--riser); border-radius: 0 12px 12px 0; padding: 12px 16px; color: var(--text); max-width: 65ch; }
+.tip strong { color: var(--amber); }
+.full { font: 600 12px/1 var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); border: 1px solid var(--amber); border-radius: 999px; padding: 3px 8px; vertical-align: 2px; white-space: nowrap; }
+dl.terms { margin: 0; display: grid; gap: 10px; }
+dl.terms dt { font-weight: 600; }
+dl.terms dd { margin: 0 0 0 0; color: var(--text); max-width: 65ch; }
+.top-link { font-size: 14px; }
+@media print { body { background: #fff; color: #000; } .toc, nav, .top-link { display: none; } }
+</style>
+<style>body { margin: 0; }</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="brand" href="housekit.html"><svg width="24" height="24" viewBox="0 0 28 28" aria-hidden="true"><g fill="#F5A524"><rect x="1" y="10" width="3" height="8" rx="1.5"/><rect x="6.5" y="5" width="3" height="18" rx="1.5"/><rect x="12.5" y="1" width="3" height="26" rx="1.5"/><rect x="18.5" y="6" width="3" height="16" rx="1.5"/><rect x="24" y="11" width="3" height="6" rx="1.5"/></g></svg><span>HouseKit</span></a>
+    <nav aria-label="HouseKit pages"><a href="housekit.html">About</a><a href="manual.html" aria-current="page">Manual</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+  </div>
+
+  <header class="page">
+    <h1>HouseKit User Manual</h1>
+    <p class="lede">Everything HouseKit does, in the order you'll meet it: <strong>build a song, shape how it feels, and play along</strong>. You don't need to know drum words; HouseKit speaks guitar.</p>
+    <p class="stamp">For HouseKit 1.0 on iPad · iPadOS 17 or later, used in landscape</p>
+  </header>
+
+  <nav class="toc" aria-labelledby="toc">
+    <h2 id="toc">Contents</h2>
+    <ol>
+      <li><a href="#start">Getting started</a></li>
+      <li><a href="#screen">The main screen</a></li>
+      <li><a href="#songs">Songs</a></li>
+      <li><a href="#sections">Sections</a></li>
+      <li><a href="#grooves">Grooves</a></li>
+      <li><a href="#feel">Energy and feel</a></li>
+      <li><a href="#playing">Playing a song</a></li>
+      <li><a href="#tell">Tell HouseKit</a></li>
+      <li><a href="#buildit">Build It for Me</a></li>
+      <li><a href="#soundslike">Sounds Like</a></li>
+      <li><a href="#playalong">Play-along mode</a></li>
+      <li><a href="#pedals">Foot pedals</a></li>
+      <li><a href="#kits">Kits and the Kit Editor</a></li>
+      <li><a href="#pattern">The Pattern Editor</a></li>
+      <li><a href="#export">Exporting</a></li>
+      <li><a href="#full">Free and HouseKit Full</a></li>
+      <li><a href="#tips">Tips for practice</a></li>
+      <li><a href="#trouble">Troubleshooting</a></li>
+      <li><a href="#words">Words HouseKit uses</a></li>
+    </ol>
+  </nav>
+
+  <section id="start" aria-labelledby="h-start">
+    <h2 id="h-start">1. Getting started</h2>
+    <p>The first time you open HouseKit, a short guided tour runs on your own starter song. It takes about three minutes and points at the real buttons as you go. Anything it changes can be undone.</p>
+    <ul>
+      <li>Skip it any time with <span class="ui">Skip tour</span>.</li>
+      <li>Replay it later: tap your song's name at the top of the screen, then <span class="ui">Take the Tour</span>.</li>
+      <li>This manual is in the same menu: <span class="ui">User Manual</span>.</li>
+    </ul>
+    <p>HouseKit works in landscape only. Headphones or a speaker make the drums sound their best; the iPad's own speakers work fine for getting started.</p>
+    <p class="tip"><strong>Quickest start:</strong> press <span class="ui">Play</span> on the starter song, pick up your guitar, and try the <span class="ui">Energy</span> buttons while it plays.</p>
+  </section>
+
+  <section id="screen" aria-labelledby="h-screen">
+    <h2 id="h-screen">2. The main screen</h2>
+    <p>From top to bottom:</p>
+    <dl class="terms">
+      <dt>Header</dt>
+      <dd>Your song's name (tap it for the song menu), <span class="ui">Undo</span> and <span class="ui">Redo</span>, the tempo with <span class="ui">−</span>, <span class="ui">+</span> and <span class="ui">TAP</span>, the time signature, your foot pedal status, the kit, and <span class="ui">Export</span>. On smaller iPads some of these show as icons only.</dd>
+      <dt>Tell HouseKit bar</dt>
+      <dd>Type or speak what you want changed, or tap one of the suggestions underneath. See <a href="#tell">Tell HouseKit</a>.</dd>
+      <dt>Song row</dt>
+      <dd>Your song as a row of blocks, one per section. Wider blocks have more bars. The selected section has a ring around it, and the one playing fills up as it goes.</dd>
+      <dt>Section settings</dt>
+      <dd>Everything about the selected section: its name, length, groove, energy and fill.</dd>
+      <dt>Transport</dt>
+      <dd><span class="ui">Play</span>/<span class="ui">Stop</span>, where you are in the song, loop, practice speed, count-in, and <span class="ui">Play-along mode</span>.</dd>
+    </dl>
+    <p><strong>Show Advanced Controls</strong> (in the song menu) adds the drummer's fine-tuning: more feel sliders, time feel, cymbals, time signatures and the Pattern Editor. Everything in this manual works without it unless it says otherwise.</p>
+  </section>
+
+  <section id="songs" aria-labelledby="h-songs">
+    <h2 id="h-songs">3. Songs</h2>
+    <p>Everything about songs is in the <strong>song menu</strong>: tap the song's name at the top left.</p>
+    <ul>
+      <li><strong>Switch songs:</strong> pick one from the list at the top of the menu.</li>
+      <li><strong>New Song</strong> gives you four ways to start:
+        <ul>
+          <li><span class="ui">Build It for Me…</span> arranges a whole song from a style, a vibe and a length (<a href="#buildit">more</a>).</li>
+          <li><span class="ui">Sounds Like…</span> starts from a real song, a description, or a recording (<a href="#soundslike">more</a>).</li>
+          <li><span class="ui">Empty Song</span> starts from nothing.</li>
+          <li><strong>From a template:</strong> 14 ready-made layouts, such as a verse–chorus rock song or a 12-bar blues.</li>
+        </ul>
+      </li>
+      <li><span class="ui">Rename…</span>, <span class="ui">Duplicate</span> and <span class="ui">Delete…</span> work on the song that's open.</li>
+    </ul>
+    <p>HouseKit saves as you go; there's no Save button. Songs live on your iPad and are included in its iCloud or computer backups.</p>
+    <h3>Tempo and count-in</h3>
+    <ul>
+      <li>Use <span class="ui">−</span> and <span class="ui">+</span> next to the tempo, or tap <span class="ui">TAP</span> four or more times in time with the music.</li>
+      <li>The count-in (in the transport) can be none, 1 bar or 2 bars. It plays before the song starts, so you have time to get your hands on the guitar.</li>
+    </ul>
+    <h3>Undo and Redo</h3>
+    <p><span class="ui">Undo</span> takes back the last change to the song, up to 50 changes. A slider drag or a knob turn counts as one change. <span class="ui">Redo</span> puts back what Undo took away. Undo covers everything that changes the song, including the Kit Editor and Tell HouseKit; the history starts fresh when you switch songs.</p>
+  </section>
+
+  <section id="sections" aria-labelledby="h-sections">
+    <h2 id="h-sections">4. Sections</h2>
+    <p>A song is made of sections: intro, verse, chorus, bridge, solo, outro, or your own.</p>
+    <ul>
+      <li><strong>Select</strong> a section: tap its block. Its settings appear below the row.</li>
+      <li><strong>Play from it:</strong> double-tap its block.</li>
+      <li><strong>Add</strong> one: tap <span class="ui">+</span> at the end of the row. It goes after the selected section.</li>
+      <li><strong>Reorder:</strong> drag a block left or right.</li>
+      <li><strong>Duplicate or delete:</strong> long-press a block, or use the buttons in its settings.</li>
+    </ul>
+    <h3>Section settings</h3>
+    <dl class="terms">
+      <dt>Type and name</dt>
+      <dd>Tap the type to change it (verse, chorus…), and edit the name if you want something like “Pre-chorus”.</dd>
+      <dt>Bars</dt>
+      <dd>How long the section is. Use the arrows to change it.</dd>
+      <dt>Repeat until I step</dt>
+      <dd>The section loops until you move on with <span class="ui">Next section</span>, a pedal, or your voice. Use it for solos, jams and vamps whose length changes each time.</dd>
+      <dt>Fill into …</dt>
+      <dd>The fill the drums play at the end of this section, leading into the next: <span class="ui">None</span>, <span class="ui">Small</span> or <span class="ui">Big</span>.</dd>
+    </dl>
+    <p>While a song plays, the selection follows the section you're hearing, so whatever you change is what you're listening to. If you tap another section mid-song, it stays selected until the next section starts.</p>
+  </section>
+
+  <section id="grooves" aria-labelledby="h-grooves">
+    <h2 id="h-grooves">5. Grooves</h2>
+    <p>Each section has a <strong>groove</strong>: the pattern the drummer plays. HouseKit has 99, all written by hand, in 12 styles and four time signatures (4/4, 3/4, 6/8 and 12/8).</p>
+    <ol class="steps">
+      <li>Select a section and tap <span class="ui">Change groove</span>.</li>
+      <li>Pick a style tab, or search for a feel such as <q>shuffle</q>, <q>half-time</q> or <q>train beat</q>.</li>
+      <li>Tap any groove to hear it at your song's tempo.</li>
+      <li>Tap <span class="ui">Use for Verse 1</span> (or <span class="ui">Use for all verses</span>) to keep it, or go back to leave things as they were.</li>
+    </ol>
+    <p><span class="ui">More options</span> in the groove picker sets <span class="ui">Simpler</span>, <span class="ui">Busier</span>, <span class="ui">On the ride</span> or <span class="ui">Half-time</span> as you choose it.</p>
+    <p>A warning appears if your song's tempo is outside the range the groove was written for. It will still play; it may just feel rushed or sleepy.</p>
+    <h3>Time signatures <span class="muted">(advanced)</span></h3>
+    <p>With advanced controls on, each section has a time signature. Changing it picks a groove in the new time from the same style. A song can change time from one section to the next.</p>
+  </section>
+
+  <section id="feel" aria-labelledby="h-feel">
+    <h2 id="h-feel">6. Energy and feel</h2>
+    <p><strong>Energy</strong> is the one control most people need. Pick how big a section feels, and HouseKit chooses the notes, the cymbal and the fills to match:</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Energy</th><th>What you hear</th></tr></thead>
+      <tbody>
+        <tr><td>Chill</td><td>Sparse and soft. For quiet verses and intros.</td></tr>
+        <tr><td>Laid back</td><td>Relaxed, with room for the guitar.</td></tr>
+        <tr><td>Steady</td><td>The groove as written.</td></tr>
+        <tr><td>Driving</td><td>Busier and harder, on the ride. For choruses.</td></tr>
+        <tr><td>Big</td><td>Everything in, on the crash. For the last chorus.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Changes are heard on the next bar while the song plays. <strong>Swing</strong> sits under Energy: slide toward <span class="ui">Swung</span> for a shuffle feel (it doesn't apply in 6/8 and 12/8, which already swing).</p>
+    <h3>Fine-tune <span class="muted">(advanced)</span></h3>
+    <dl class="terms">
+      <dt>Simpler ↔ Busier</dt><dd>How many notes the drummer adds.</dd>
+      <dt>Softer ↔ Harder</dt><dd>How hard the drums are hit.</dd>
+      <dt>Locked in ↔ Human</dt><dd>How much the timing and dynamics vary, like a real player.</dd>
+      <dt>Time</dt><dd><span class="ui">Half</span>, <span class="ui">Normal</span> or <span class="ui">Double</span> time feel.</dd>
+      <dt>Cymbals</dt><dd>Keep time on the <span class="ui">Hi-hat</span>, <span class="ui">Ride</span> or <span class="ui">Crash</span>.</dd>
+    </dl>
+  </section>
+
+  <section id="playing" aria-labelledby="h-playing">
+    <h2 id="h-playing">7. Playing a song</h2>
+    <ul>
+      <li><span class="ui">Play</span> starts from the selected section, after the count-in. The same button stops; the last hits ring out naturally.</li>
+      <li><strong>Loop</strong> repeats the selected section until you turn it off. Great for working on one part.</li>
+      <li><strong>Speed</strong> slows the whole song down (to 50%) or speeds it up (to 120%) for practice, without changing the tempo you saved.</li>
+      <li>Every edit is heard live: change a groove, energy or the kit while it plays.</li>
+    </ul>
+  </section>
+
+  <section id="tell" aria-labelledby="h-tell">
+    <h2 id="h-tell">8. Tell HouseKit</h2>
+    <p>Not a drummer? Say what you want in your own words, and HouseKit makes the change and tells you exactly what it did.</p>
+    <ul>
+      <li><strong>Type:</strong> tap the bar at the top and type a request.</li>
+      <li><strong>Speak:</strong> hold the microphone button, say it, and let go. The drums duck while you talk. It works best with headphones.</li>
+      <li><strong>Tap a suggestion</strong> under the bar, such as <span class="ui">More swing</span> or <span class="ui">Punchier</span>.</li>
+    </ul>
+    <p>Things you can ask:</p>
+    <div class="scroll"><table>
+      <thead><tr><th>To change</th><th>Try saying</th></tr></thead>
+      <tbody>
+        <tr><td>Feel</td><td><q>more swing in the chorus</q>, <q>simpler</q>, <q>hit harder</q>, <q>more human</q></td></tr>
+        <tr><td>Sound</td><td><q>punchier</q>, <q>bigger room</q>, <q>brighter cymbals</q>, <q>louder kick</q>, <q>use the Big Rusty kit</q></td></tr>
+        <tr><td>Groove</td><td><q>different groove</q>, <q>a funk groove for the bridge</q>, <q>half time in the outro</q></td></tr>
+        <tr><td>Song</td><td><q>faster</q>, <q>tempo 96</q>, <q>add a bridge</q>, <q>add 4 bars to chorus 2</q>, <q>remove the solo</q>, <q>fill into the chorus</q></td></tr>
+        <tr><td>Playback</td><td><q>play</q>, <q>stop</q>, <q>next section</q>, <q>give me a fill</q>, <q>loop this</q>, <q>end it</q></td></tr>
+        <tr><td>A new song</td><td><q>something that sounds like Back in Black</q> opens <a href="#soundslike">Sounds Like</a></td></tr>
+      </tbody>
+    </table></div>
+    <p>Name a section (<q>chorus 2</q>, <q>the bridge</q>, <q>all verses</q>) or leave it out to change the one selected or playing. The reply card has <span class="ui">Undo</span> to take the whole request back, and fades after a few seconds.</p>
+    <p class="tip"><strong>Voice needs</strong> microphone and speech recognition permission (Settings › HouseKit). On iPads that can't recognize speech on the device, it also needs an internet connection.</p>
+  </section>
+
+  <section id="buildit" aria-labelledby="h-buildit">
+    <h2 id="h-buildit">9. Build It for Me</h2>
+    <p>Song menu › New Song › <span class="ui">Build It for Me…</span> (or the button on an empty song) makes a whole arranged song from a few choices:</p>
+    <dl class="terms">
+      <dt>Style</dt><dd>Rock, blues, funk, country and more.</dd>
+      <dt>Count</dt><dd>In 4 (most songs), a waltz (3/4), a rolling 6/8 or a slow blues 12/8.</dd>
+      <dt>Vibe</dt><dd><span class="ui">Laid back</span>, <span class="ui">Driving</span> or <span class="ui">Epic</span>. Epic adds a half-time breakdown.</dd>
+      <dt>Tempo</dt><dd>Suggested for the style, or tap along.</dd>
+      <dt>Length</dt><dd><span class="ui">Short</span>, <span class="ui">Normal</span> or <span class="ui">Long</span>.</dd>
+    </dl>
+    <p>Tap <span class="ui">Build the song</span>. You get calmer verses and bigger choruses, energy that lifts into each chorus and peaks at the last, fills into choruses, and a kit that suits the style. Then change anything you like.</p>
+  </section>
+
+  <section id="soundslike" aria-labelledby="h-soundslike">
+    <h2 id="h-soundslike">10. Sounds Like</h2>
+    <p>Song menu › New Song › <span class="ui">Sounds Like…</span> makes drums after a real song. Three ways in:</p>
+    <ol class="steps">
+      <li><strong>Name a song</strong> HouseKit knows, such as <q>Back in Black</q> or <q>Billie Jean by Michael Jackson</q>. Tap <span class="ui">Songs HouseKit knows</span> to browse all 70.</li>
+      <li><strong>Describe the feel</strong> for anything else: <q>a slow 6/8 blues</q>, <q>fast country shuffle at 140</q>.</li>
+      <li><strong>Analyze a recording</strong> <span class="full">Full</span>: pick an audio file you own (MP3, M4A, WAV or AIFF from the Files app). HouseKit measures its tempo, whether it's straight or shuffled, and whether it's in 3 or 4, then picks its closest groove.</li>
+    </ol>
+    <p>The result shows the tempo, time, style and kit, and how sure HouseKit is. Nudge the tempo if you need to, then:</p>
+    <ul>
+      <li><span class="ui">Hear it</span> plays the groove at that tempo.</li>
+      <li><span class="ui">Build the song</span> makes a new song: intro, verses, choruses, a bridge and an outro, with energy rising into the choruses.</li>
+      <li><span class="ui">Save the groove</span> <span class="full">Full</span> adds it to <strong>My grooves</strong> to use in any song.</li>
+    </ul>
+    <p class="muted">Tempos are approximate and the sections are a typical layout, not the record's. Apple Music downloads can't be analyzed, because they're protected.</p>
+  </section>
+
+  <section id="playalong" aria-labelledby="h-playalong">
+    <h2 id="h-playalong">11. Play-along mode</h2>
+    <p>Tap <span class="ui">Play-along mode</span> for a big, simple screen you can read from across the room while your hands are busy.</p>
+    <ul>
+      <li><strong>Where you are:</strong> the section, the bar and the beat, with a map of the whole song underneath.</li>
+      <li><strong>Countdown:</strong> near the end of each section, it shows what's next, beat by beat on the last bar.</li>
+      <li><strong>Transport:</strong> previous section, restart section, play/stop, next section, and loop.</li>
+      <li><strong>Side panel:</strong> practice speed (±5%), drums volume, a click, and <span class="ui">Fill now</span>, <span class="ui">Big ending</span> and <span class="ui">Tap tempo</span>.</li>
+    </ul>
+    <h3>When changes happen</h3>
+    <p>Asking for the next section never breaks the beat. Under <strong>When I ask for the next section</strong>, choose:</p>
+    <ul>
+      <li><span class="ui">After this bar</span>: the drums finish the bar they're in, then move on. Quickest.</li>
+      <li><span class="ui">End of section</span>: the drums play to the end of the section (or this pass of a repeating one), so phrases stay whole.</li>
+    </ul>
+    <p>Tap an action again before it lands to cancel it. <span class="ui">Edit song</span> takes you back to the main screen.</p>
+  </section>
+
+  <section id="pedals" aria-labelledby="h-pedals">
+    <h2 id="h-pedals">12. Foot pedals</h2>
+    <p>Keep your hands on the guitar. HouseKit works with <strong>Bluetooth page turners</strong> (the kind that act as a keyboard) and <strong>MIDI foot controllers</strong> (USB or Bluetooth MIDI).</p>
+    <ol class="steps">
+      <li>Pair a Bluetooth pedal in the iPad's Settings › Bluetooth, or plug in a MIDI controller.</li>
+      <li>In HouseKit, tap the pedal chip in the header (or in Play-along mode) to open <strong>Foot pedals</strong>.</li>
+      <li>Tap <span class="ui">Add a pedal</span> and press the pedal so HouseKit learns it.</li>
+      <li>Under <strong>What each pedal does</strong>, choose an action for a tap, a double-tap and a hold.</li>
+      <li>Use <strong>Test it</strong> to check each one.</li>
+    </ol>
+    <p>Actions: Play/stop, Next section, Previous section, Restart section, Loop this section, Fill now, Big ending and Tap tempo. You can also have HouseKit flash a banner or play a quiet click in your ears to confirm each press.</p>
+  </section>
+
+  <section id="kits" aria-labelledby="h-kits">
+    <h2 id="h-kits">13. Kits and the Kit Editor</h2>
+    <p>Tap the kit name in the header to open the Kit Editor. HouseKit has 12 kits: three real recorded drum sets (a jazz club kit, the big rock kit Big Rusty, and a dry vintage kit) shaped in different ways, plus synthesized and electronic kits.</p>
+    <ul>
+      <li><strong>Switch kits</strong> from the menu at the top.</li>
+      <li><strong>Pick a drum</strong> on the left: kick, snare, hi-hat, ride, crash or a tom.</li>
+      <li><strong>Choose its sound</strong> <span class="full">Full</span> under <strong>Starting sound</strong>. Sounds from every kit can be mixed.</li>
+      <li><strong>Shape it:</strong> drag a knob up or down; double-tap a knob to reset it. Tone, Room and Volume are always shown; with advanced controls on you also get Tune, Attack, Decay and the drum's character.</li>
+      <li><strong>Hear it:</strong> tap to hear the drum, or turn on <span class="ui">Hear it in the groove</span>.</li>
+      <li><span class="ui">Save as new kit</span> <span class="full">Full</span> keeps your changes as your own kit for any song.</li>
+    </ul>
+    <p>Edits belong to the song you're in until you save them as a kit; the kit chip shows <q>edited</q> when they differ.</p>
+  </section>
+
+  <section id="pattern" aria-labelledby="h-pattern">
+    <h2 id="h-pattern">14. The Pattern Editor <span class="full">Full</span></h2>
+    <p>With advanced controls on, select a section and tap <span class="ui">Edit pattern</span> to change its groove note by note.</p>
+    <ul>
+      <li>Each row is a drum; each column is a step in the bar.</li>
+      <li>Tapping a step cycles it: off, normal, loud, soft, off.</li>
+      <li><span class="ui">Clear bar</span> empties it to start again.</li>
+      <li><span class="ui">Save as my groove</span> adds it to <strong>My grooves</strong>, a style tab in the groove picker, to use in any song.</li>
+    </ul>
+  </section>
+
+  <section id="export" aria-labelledby="h-export">
+    <h2 id="h-export">15. Exporting</h2>
+    <p>Tap <span class="ui">Export</span> in the header. HouseKit renders the whole song, count-in and ending included, as a 48 kHz, 24-bit stereo WAV that sounds exactly like playback.</p>
+    <ul>
+      <li><span class="ui">Save to Files</span> puts it in a folder of your choice. This is the quickest.</li>
+      <li><span class="ui">Share…</span> sends it by AirDrop, Mail, or to another app such as GarageBand.</li>
+    </ul>
+    <p>Every sound in HouseKit is synthesized in the app or released into the public domain, so what you export is yours to use anywhere, including in songs you sell, with no license or credit needed.</p>
+  </section>
+
+  <section id="full" aria-labelledby="h-full">
+    <h2 id="h-full">16. Free and HouseKit Full</h2>
+    <p>HouseKit is free to download, and the free version is the whole app: building, Energy, Tell HouseKit, Play-along, foot pedals, Undo, export and the tour. It includes:</p>
+    <ul>
+      <li>the Rock, Blues &amp; Shuffle, Pop and Ballad styles, and My grooves;</li>
+      <li>the Garage Kit and Big Rusty, with the Kit Editor's knobs;</li>
+      <li>up to 3 songs;</li>
+      <li>Sounds Like songs in those styles.</li>
+    </ul>
+    <p><strong>HouseKit Full</strong> is one purchase, not a subscription, and Family Sharing shares it. It adds all 12 styles and 99 grooves, all 12 kits with sound picking and saved kits, unlimited songs, the Pattern Editor, every Sounds Like song, analyzing recordings, and saving grooves. Things marked <span class="full">Full</span> in this manual need it.</p>
+    <ul>
+      <li>Every groove and Sounds Like song can be heard before you buy. A lock marks what's in Full; tapping it shows the offer.</li>
+      <li>Unlock or restore any time from the song menu: <span class="ui">Unlock HouseKit Full…</span> or <span class="ui">Restore Purchases</span>.</li>
+      <li>Nothing you've made is ever locked: songs that use Full grooves or kits keep playing.</li>
+    </ul>
+  </section>
+
+  <section id="tips" aria-labelledby="h-tips">
+    <h2 id="h-tips">17. Tips for practice</h2>
+    <ul>
+      <li><strong>Learning a tricky part?</strong> Loop the section and drop the speed to 70–80%, then raise it 5% at a time.</li>
+      <li><strong>Jamming or soloing?</strong> Turn on <span class="ui">Repeat until I step</span> and move on with a pedal when you're ready.</li>
+      <li><strong>Don't know the drum words?</strong> Describe it: <q>make the verse calmer</q>, <q>more drive in the chorus</q>.</li>
+      <li><strong>Practicing for a gig?</strong> Build the set's songs, set each tempo, and step through them in Play-along mode with a pedal.</li>
+      <li><strong>Tight timing practice?</strong> Set <span class="ui">Locked in</span> (advanced) and turn on the click in Play-along mode.</li>
+    </ul>
+  </section>
+
+  <section id="trouble" aria-labelledby="h-trouble">
+    <h2 id="h-trouble">18. Troubleshooting</h2>
+    <details>
+      <summary>No sound</summary>
+      <div><p>Check the iPad's volume and that the side switch or Control Center isn't muting it, then the drums level in Play-along mode. If another app or a call took the audio, switch away from HouseKit and back. If a banner reports an audio problem, tap Dismiss and press Play again.</p></div>
+    </details>
+    <details>
+      <summary>The mic doesn't hear me</summary>
+      <div><p>Turn on Microphone and Speech Recognition in Settings › HouseKit. Hold the mic button the whole time you speak, then let go. On some iPads speech needs an internet connection. You can always type instead.</p></div>
+    </details>
+    <details>
+      <summary>My pedal doesn't work</summary>
+      <div><p>Make sure it's paired in Settings › Bluetooth (or plugged in), then add it again in Foot pedals. Page turners need to be in a keyboard mode (often called “page turn” or “arrow keys”); check the pedal's manual.</p></div>
+    </details>
+    <details>
+      <summary>A recording won't analyze</summary>
+      <div><p>Use a file you own that the Files app can read: MP3, M4A, WAV or AIFF. Apple Music downloads are protected and can't be read. Songs with a clear drum beat give the best results.</p></div>
+    </details>
+    <details>
+      <summary>The drums crackle or stutter</summary>
+      <div><p>Close other apps that use audio, and keep the iPad on power for long sessions. If it keeps happening, email us your iPad model and what was playing.</p></div>
+    </details>
+    <p>More answers, and how to reach us, are on the <a href="support.html">Support page</a>.</p>
+  </section>
+
+  <section id="words" aria-labelledby="h-words">
+    <h2 id="h-words">19. Words HouseKit uses</h2>
+    <dl class="terms">
+      <dt>Bar</dt><dd>One cycle of the beat: four counts in 4/4, three in 3/4. Sections are measured in bars.</dd>
+      <dt>BPM</dt><dd>Beats per minute: the tempo.</dd>
+      <dt>Count-in</dt><dd>Clicks before the song starts, so you come in together.</dd>
+      <dt>Fill</dt><dd>A short drum run at the end of a section that leads into the next.</dd>
+      <dt>Groove</dt><dd>The pattern the drummer plays in a section.</dd>
+      <dt>Half time</dt><dd>The beat feels half as fast while the tempo stays the same. Heavy and spacious.</dd>
+      <dt>Shuffle / swing</dt><dd>Eighth notes played long-short instead of even, as in blues and jazz.</dd>
+      <dt>Vamp</dt><dd>A section that repeats until you move on (Repeat until I step).</dd>
+    </dl>
+  </section>
+
+  <p class="top-link"><a href="#toc">Back to contents</a></p>
+
+  <footer><span>HouseKit by Cranky Nerd Customs</span><span><a href="support.html">Support</a> · <a href="privacy.html">Privacy Policy</a> · <a href="housekit.html">About HouseKit</a></span></footer>
+</div>
+</body>
+</html>
