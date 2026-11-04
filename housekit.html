@@ -79,6 +79,7 @@ nav a[aria-current="page"] { color: var(--text); }
 }
 .block b { font: 700 19px/1.1 var(--display); }
 .block small { font: 500 13px/1.2 var(--body); opacity: 0.8; }
+.block small.energy { opacity: 0.7; }
 .block i { font: 600 12px/1.2 var(--body); font-style: normal; opacity: 0.8; margin-top: auto; display: flex; justify-content: space-between; align-items: baseline; gap: 4px; }
 .block .fill { font: 700 16px/1 var(--body); }
 .intro { background: var(--intro); } .verse { background: var(--verse); } .chorus { background: var(--chorus); }
@@ -150,16 +151,16 @@ footer { padding-block: 24px 48px; color: var(--muted); font-size: 14px; display
         <span class="meta">56 bars · about 1:57</span>
       </div>
       <div class="blocks">
-        <div class="block intro" style="--bars:4"><b>Intro</b><small>4 bars</small><i>Straight 8ths<span class="fill" aria-label="fills into the next section">»</span></i></div>
-        <div class="block verse" style="--bars:8"><b>Verse 1</b><small>8 bars</small><i>Straight 8ths<span class="fill" aria-label="fills into the next section">»</span></i></div>
-        <div class="block chorus" style="--bars:8"><b>Chorus 1</b><small>8 bars</small><i>Driving Eighths<span class="fill" aria-label="fills into the next section">»</span></i></div>
-        <div class="block verse" style="--bars:8"><b>Verse 2</b><small>8 bars</small><i>Straight 8ths<span class="fill" aria-label="fills into the next section">»</span></i></div>
-        <div class="block chorus" style="--bars:8"><b>Chorus 2</b><small>8 bars</small><i>Driving Eighths<span class="fill" aria-label="fills into the next section">»</span></i></div>
-        <div class="block bridge" style="--bars:8"><b>Bridge</b><small>8 bars</small><i>Half-time Rock<span class="fill" aria-label="fills into the next section">»</span></i></div>
-        <div class="block chorus" style="--bars:8"><b>Chorus 3</b><small>8 bars</small><i>Ride Rock<span class="fill" aria-label="fills into the next section">»</span></i></div>
-        <div class="block outro" style="--bars:4"><b>Outro</b><small>4 bars</small><i>Half-time Rock</i></div>
+        <div class="block intro" style="--bars:4"><b>Intro</b><small>4 bars</small><small class="energy">Chill</small><i>Straight 8ths<span class="fill" aria-label="fills into the next section">»</span></i></div>
+        <div class="block verse" style="--bars:8"><b>Verse 1</b><small>8 bars</small><small class="energy">Laid back</small><i>Straight 8ths<span class="fill" aria-label="fills into the next section">»</span></i></div>
+        <div class="block chorus" style="--bars:8"><b>Chorus 1</b><small>8 bars</small><small class="energy">Driving</small><i>Driving Eighths<span class="fill" aria-label="fills into the next section">»</span></i></div>
+        <div class="block verse" style="--bars:8"><b>Verse 2</b><small>8 bars</small><small class="energy">Steady</small><i>Straight 8ths<span class="fill" aria-label="fills into the next section">»</span></i></div>
+        <div class="block chorus" style="--bars:8"><b>Chorus 2</b><small>8 bars</small><small class="energy">Driving</small><i>Driving Eighths<span class="fill" aria-label="fills into the next section">»</span></i></div>
+        <div class="block bridge" style="--bars:8"><b>Bridge</b><small>8 bars</small><small class="energy">Laid back</small><i>Half-time Rock<span class="fill" aria-label="fills into the next section">»</span></i></div>
+        <div class="block chorus" style="--bars:8"><b>Chorus 3</b><small>8 bars</small><small class="energy">Big</small><i>Ride Rock<span class="fill" aria-label="fills into the next section">»</span></i></div>
+        <div class="block outro" style="--bars:4"><b>Outro</b><small>4 bars</small><small class="energy">Steady</small><i>Half-time Rock</i></div>
       </div>
-      <p class="songrow-caption">The song row, as it looks in HouseKit: each block is a section, as wide as its bars, with its groove at the bottom, and » marks a fill into the next section. Tap a block to set its groove and its energy, from Chill to Big.</p>
+      <p class="songrow-caption">The song row, as it looks in HouseKit: each block is a section, as wide as its bars, with its energy (from Chill to Big) under the bars and its groove at the bottom. » marks a fill into the next section. The energy builds into each chorus and peaks at the last one.</p>
     </section>
   </header>
 
