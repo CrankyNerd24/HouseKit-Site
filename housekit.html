@@ -80,11 +80,11 @@ nav a[aria-current="page"] { color: var(--text); }
 .block b { font: 700 19px/1.1 var(--display); }
 .block small { font: 500 13px/1.2 var(--body); opacity: 0.8; }
 .block i { font: 600 12px/1.2 var(--body); font-style: normal; opacity: 0.75; margin-top: auto; }
+/* Each section's energy, inside its block: a dark fill on the block's own colour. */
+.meter { height: 5px; border-radius: 3px; background: rgba(20, 20, 22, 0.18); position: relative; overflow: hidden; margin-top: 4px; }
+.meter::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--e); background: rgba(20, 20, 22, 0.75); border-radius: 3px; }
 .intro { background: var(--intro); } .verse { background: var(--verse); } .chorus { background: var(--chorus); }
 .bridge { background: var(--bridge); } .outro { background: var(--outro); }
-.energy { display: flex; gap: 6px; }
-.energy span { flex: var(--bars) 0 0; min-width: 64px; height: 6px; border-radius: 3px; background: var(--riser-hi); position: relative; overflow: hidden; }
-.energy span::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--e); background: var(--amber); }
 .songrow-caption { font-size: 14px; color: var(--muted); }
 
 /* Set list of differences */
@@ -125,7 +125,7 @@ footer { padding-block: 24px 48px; color: var(--muted); font-size: 14px; display
   .block { min-height: 80px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .energy span::after { animation: rise 1.2s ease-out both; }
+  .meter::after { animation: rise 1.2s ease-out both; }
   @keyframes rise { from { width: 0; } }
 }
 </style>
@@ -156,21 +156,16 @@ footer { padding-block: 24px 48px; color: var(--muted); font-size: 14px; display
         <span class="meta">56 bars · about 1:57 · 115 BPM</span>
       </div>
       <div class="blocks">
-        <div class="block intro" style="--bars:4"><b>Intro</b><small>4 bars</small><i>Chill</i></div>
-        <div class="block verse" style="--bars:8"><b>Verse 1</b><small>8 bars</small><i>Laid back</i></div>
-        <div class="block chorus" style="--bars:8"><b>Chorus 1</b><small>8 bars</small><i>Driving</i></div>
-        <div class="block verse" style="--bars:8"><b>Verse 2</b><small>8 bars</small><i>Steady</i></div>
-        <div class="block chorus" style="--bars:8"><b>Chorus 2</b><small>8 bars</small><i>Driving</i></div>
-        <div class="block bridge" style="--bars:8"><b>Bridge</b><small>8 bars</small><i>Half time</i></div>
-        <div class="block chorus" style="--bars:8"><b>Chorus 3</b><small>8 bars</small><i>Big</i></div>
-        <div class="block outro" style="--bars:4"><b>Outro</b><small>4 bars</small><i>Ending</i></div>
+        <div class="block intro" style="--bars:4;--e:20%"><b>Intro</b><small>4 bars</small><i>Chill</i><span class="meter" aria-hidden="true"></span></div>
+        <div class="block verse" style="--bars:8;--e:40%"><b>Verse 1</b><small>8 bars</small><i>Laid back</i><span class="meter" aria-hidden="true"></span></div>
+        <div class="block chorus" style="--bars:8;--e:75%"><b>Chorus 1</b><small>8 bars</small><i>Driving</i><span class="meter" aria-hidden="true"></span></div>
+        <div class="block verse" style="--bars:8;--e:55%"><b>Verse 2</b><small>8 bars</small><i>Steady</i><span class="meter" aria-hidden="true"></span></div>
+        <div class="block chorus" style="--bars:8;--e:75%"><b>Chorus 2</b><small>8 bars</small><i>Driving</i><span class="meter" aria-hidden="true"></span></div>
+        <div class="block bridge" style="--bars:8;--e:45%"><b>Bridge</b><small>8 bars · half time</small><i>Laid back</i><span class="meter" aria-hidden="true"></span></div>
+        <div class="block chorus" style="--bars:8;--e:100%"><b>Chorus 3</b><small>8 bars</small><i>Big</i><span class="meter" aria-hidden="true"></span></div>
+        <div class="block outro" style="--bars:4;--e:50%"><b>Outro</b><small>4 bars</small><i>Steady</i><span class="meter" aria-hidden="true"></span></div>
       </div>
-      <div class="energy" aria-hidden="true">
-        <span style="--bars:4;--e:20%"></span><span style="--bars:8;--e:40%"></span><span style="--bars:8;--e:75%"></span>
-        <span style="--bars:8;--e:55%"></span><span style="--bars:8;--e:75%"></span><span style="--bars:8;--e:45%"></span>
-        <span style="--bars:8;--e:100%"></span><span style="--bars:4;--e:50%"></span>
-      </div>
-      <p class="songrow-caption">Each block is a section, as wide as its bars. The bar underneath is its energy: it builds into each chorus and peaks at the last. Fills land where the song changes.</p>
+      <p class="songrow-caption">Each block is a section, as wide as its bars. The word and meter at the bottom of each block are its energy, from Chill to Big: it builds into each chorus and peaks at the last one.</p>
     </section>
   </header>
 
