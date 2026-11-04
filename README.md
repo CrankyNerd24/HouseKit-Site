@@ -11,7 +11,8 @@ The website for HouseKit, served by GitHub Pages at **https://housekitapp.com**
 | Privacy Policy | `privacy.html` |
 | Not found | `404.html` |
 
-`CNAME` holds the custom domain and `.nojekyll` serves the files as they are.
+`favicon.svg`, `favicon-32.png` and `apple-touch-icon.png` are the app icon; the
+logo in each page's header is drawn from the same icon. `CNAME` holds the custom domain and `.nojekyll` serves the files as they are.
 Pages: Settings ▸ Pages ▸ Deploy from a branch ▸ `main` / `/ (root)`.
 
 The app's source lives in a separate private repository; App Store Connect's
